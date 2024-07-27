@@ -3,3 +3,4 @@ This repo implements a simple Rust image processing pipeline. The goal of this p
 
 Currently implemented features:
 - Calculate brightness of an image
+- Calculate blur score based on the laplacian variance of the image
