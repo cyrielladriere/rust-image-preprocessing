@@ -32,9 +32,19 @@ fn main() {
     let path = Path::new("images/gamma_log_transform.png");
     gamma_log.save(path).unwrap();
     println!("gamma log transform saved at: {:?}", path);
+    let gamma_log_brightness: f64 = average_brightness(gamma_log.to_vec());
+    println!(
+        "brightness of gamma log transform: {:?}",
+        gamma_log_brightness
+    );
 
     let gamma_powlaw = get_gamma_powlaw_transform(&img, 0.7);
     let path = Path::new("images/gamma_powlaw_transform.png");
     gamma_powlaw.save(path).unwrap();
     println!("gamma powlaw transform saved at: {:?}", path);
+    let gamma_powlaw_brightness: f64 = average_brightness(gamma_powlaw.to_vec());
+    println!(
+        "brightness of gamma powlaw transform: {:?}",
+        gamma_powlaw_brightness
+    );
 }
