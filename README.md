@@ -23,7 +23,7 @@ Achieved using the `get_negative` function inside `image_transformation.rs`.
 Achieved using the `get_gamma_log_transform` function inside `image_transformation.rs`.
 ![Pulp Fiction movie poster](images/gamma_log_transform.png)
 
-## Gamma log transform
+## Power Law transform
 Achieved using the `get_gamma_powlaw_transform` function with `gamma=0.7` inside `image_transformation.rs`.
 ![Pulp Fiction movie poster](images/gamma_powlaw_transform.png)
 
