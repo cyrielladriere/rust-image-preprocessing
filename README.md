@@ -7,3 +7,5 @@ Currently implemented image information features:
 
 Currently implemented image transformation features:
 - Get and save the negative version of an image 
+- Get and save gamma log transformation of an image (makes the image much brighter)
+- Get and save gamma power law transformation (makes the image darker, dependent on the gamma parameter)
