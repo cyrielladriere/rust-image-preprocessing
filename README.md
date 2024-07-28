@@ -3,8 +3,8 @@ This repo implements a simple Rust image processing library. The goal of this pr
 
 # Current capabilities
 Currently implemented image information features:
-- Calculate brightness of an image
-- Calculate blur score based on the laplacian variance of the image
+- Calculate **brightness** of an image
+- Calculate **blur score** based on the laplacian variance of the image
 
 Currently implemented image transformation features:
 - Get and save the **negative** version of an image 
