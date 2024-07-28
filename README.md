@@ -26,3 +26,11 @@ Achieved using the `get_gamma_log_transform` function inside `image_transformati
 ## Gamma log transform
 Achieved using the `get_gamma_powlaw_transform` function with `gamma=0.7` inside `image_transformation.rs`.
 ![Pulp Fiction movie poster](images/gamma_powlaw_transform.png)
+
+## Gaussian noise
+Achieved using the `get_gaussian_noise` function with `std_dev=100` inside `image_transformation.rs`.
+![Pulp Fiction movie poster](images/gaussian_noise_image.png)
+
+## Salt and Pepper noise
+Achieved using the `get_salt_and_pepper_noise` function with `noise_percentage=0.2` inside `image_transformation.rs`.
+![Pulp Fiction movie poster](images/salt_and_pepper_noise_image.png)

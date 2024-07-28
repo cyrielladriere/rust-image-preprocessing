@@ -6,9 +6,10 @@ use std::path::Path;
 
 use crate::image_info::{average_brightness, calc_blur};
 use crate::image_transformation::{
-    get_gamma_log_transform, get_gamma_powlaw_transform, get_negative,
+    get_gamma_log_transform, get_gamma_powlaw_transform, get_negative, get_salt_and_pepper_noise,
 };
 use image::{DynamicImage, GenericImageView};
+use image_transformation::get_gaussian_noise;
 
 fn main() {
     let dir: &str = "images/pulp_fiction.png";
@@ -47,4 +48,14 @@ fn main() {
         "brightness of gamma powlaw transform: {:?}",
         gamma_powlaw_brightness
     );
+
+    let gaussian_noise = get_gaussian_noise(&img, 100.0);
+    let path = Path::new("images/gaussian_noise_image.png");
+    gaussian_noise.save(path).unwrap();
+    println!("gaussian noise image saved at: {:?}", path);
+
+    let salt_and_pepper_noise = get_salt_and_pepper_noise(&img, 0.2);
+    let path = Path::new("images/salt_and_pepper_noise_image.png");
+    salt_and_pepper_noise.save(path).unwrap();
+    println!("salt and pepper noise image saved at: {:?}", path);
 }

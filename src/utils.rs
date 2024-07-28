@@ -1,4 +1,6 @@
-use image::GrayImage;
+use image::{GrayImage, ImageBuffer, Rgb, RgbImage};
+use rand::rngs::ThreadRng;
+use rand_distr::{Distribution, Normal};
 
 pub fn calculate_variance(image: &Vec<f64>) -> f64 {
     let mean = mean(image);
@@ -54,5 +56,42 @@ pub fn apply_laplacian(image: &GrayImage) -> Vec<f64> {
         .iter()
         .flat_map(|row| row.iter())
         .cloned()
+        .collect()
+}
+
+pub fn combine_channels(
+    width: u32,
+    height: u32,
+    r_channel: Vec<u8>,
+    g_channel: Vec<u8>,
+    b_channel: Vec<u8>,
+) -> RgbImage {
+    let mut img_noised = ImageBuffer::new(width, height);
+
+    for (x, y, pixel) in img_noised.enumerate_pixels_mut() {
+        let idx = (y * width + x) as usize;
+        *pixel = Rgb([r_channel[idx], g_channel[idx], b_channel[idx]]);
+    }
+
+    img_noised
+}
+
+pub fn apply_noise_to_channel<F>(
+    img: &RgbImage,
+    rng: &mut ThreadRng,
+    mean: f64,
+    std_dev: f64,
+    get_channel: F,
+) -> Vec<u8>
+where
+    F: Fn(&Rgb<u8>) -> u8,
+{
+    let normal = Normal::new(mean, std_dev).unwrap();
+    img.pixels()
+        .map(|pixel| {
+            let value = get_channel(pixel) as f64;
+            let noise_value = normal.sample(rng);
+            (value + noise_value).clamp(0.0, 255.0) as u8
+        })
         .collect()
 }
