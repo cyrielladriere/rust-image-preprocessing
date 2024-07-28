@@ -7,9 +7,11 @@ Currently implemented image information features:
 - Calculate blur score based on the laplacian variance of the image
 
 Currently implemented image transformation features:
-- Get and save the negative version of an image 
-- Get and save gamma log transformation of an image (makes the image much brighter)
-- Get and save gamma power law transformation (makes the image darker, dependent on the gamma parameter)
+- Get and save the **negative** version of an image 
+- Get and save **gamma log transformation** of an image (makes the image much brighter)
+- Get and save **gamma power law transformation** (makes the image darker, dependent on the gamma parameter)
+- Apply **gaussian noise** to an image
+- Apply **salt and pepper noise** to an image
 
 # Transformation examples
 In this section we will transform a "Pulp Fiction" movie poster using different techniques implemented in this repository. The original image looks like this:
